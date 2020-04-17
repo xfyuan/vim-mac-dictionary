@@ -18,6 +18,13 @@ endfunction
 
 let s:plugindir = expand('<sfile>:p:h:h')
 
+function! s:isUsePopup()
+    if !exists('g:vim_mac_dictionary_use_popup')
+        return v:true
+    endif
+    return g:vim_mac_dictionary_use_popup == 1
+endfunction
+
 function! s:isUseBuffer()
     if !exists('g:vim_mac_dictionary_use_buffer')
         return v:true
@@ -67,6 +74,20 @@ function! s:printBuffer(result)
     return
 endfunction
 
+function! s:printPopup(result)
+    let x = substitute(a:result, '\v\.\s(\S+)1\.', '.\r\1\r  1.', 'g')
+    let x = substitute(x, '\v(\S+\s*)(1\.)', '\1\r  \2', 'g')
+    let x = substitute(x, '\v(\d+\.)', '\r  \1', 'g')
+    let x = substitute(x, '\v(\D\.)', '\1\r', 'g')
+    let x = substitute(x, '\v\s?▸', '\r    ▸', 'g')
+    let x = substitute(x, '\%x00', '', 'g')
+    let content = filter(split(x, "\r"), 'v:key != ""')
+    let opts = {"close":"button", "title":"Mac Dictionary"}
+    let g:quickui_color_scheme = 'borland'
+    call quickui#textbox#open(content, opts)
+    return
+endfunction
+
 function! VimMacDictionary#find(word)
 
     let l:result = system(s:plugindir . "/dictionary.swift " . a:word)
@@ -77,6 +98,18 @@ function! VimMacDictionary#find(word)
     endif
     if s:isUseBuffer()
         call s:printBuffer(l:result)
+        return
+    endif
+
+    echo l:result
+endfunction
+
+function! VimMacDictionary#popup(word)
+
+    let l:result = system(s:plugindir . "/dictionary.swift " . a:word)
+
+    if s:isUsePopup()
+        call s:printPopup(l:result)
         return
     endif
 

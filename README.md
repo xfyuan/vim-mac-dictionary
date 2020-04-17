@@ -1,5 +1,5 @@
 # vim-mac-dictionary
- 
+
 [English](README.md) [한국어](README_kr.md)
 
 A Vim plugin that helps you find words using Mac's dictionary app.
@@ -17,7 +17,7 @@ A Vim plugin that helps you find words using Mac's dictionary app.
 Place this in your .vimrc:
 
 ```viml
-Plug 'johngrib/vim-mac-dictionary'
+Plug 'xfyuan/vim-mac-dictionary'
 ```
 
 Then run the following in Vim:
@@ -43,14 +43,16 @@ Then run the following in Vim:
 
 ## How To Use
 
-* Place the cursor on a word and type `:MacDictWord` to find the dictionary.
+* Place the cursor on a word and type `:MacDictPopup` to find the dictionary, and print result in floating window. Notes: this feature use vim-quickui plugin.
+* Place the cursor on a word and type `:MacDictWord` to find the dictionary, and print result in a new buffer.
 * type `:MacDictQuery` and then type the word you want to search for, it will find the dictionary.
 
 You can register shortcuts in the following ways:
 
 ```viml
-nnoremap <C-p> :MacDictWord<CR>
-nnoremap <C-S-p> :MacDictQuery<CR>
+nnoremap <silent><leader>ww :MacDictPopup<CR>
+nnoremap <silent><leader>wd :MacDictWord<CR>
+nnoremap <silent><leader>wq :MacDictQuery<CR>
 ```
 
 ## Configuration
