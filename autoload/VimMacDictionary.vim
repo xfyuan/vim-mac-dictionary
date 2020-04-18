@@ -81,21 +81,10 @@ function! s:printPopup(result)
     let x = substitute(x, '\v(\D\.)', '\1\r', 'g')
     let x = substitute(x, '\v\s?▸', '\r    ▸', 'g')
     let x = substitute(x, '\%x00', '', 'g')
-    " let x = join(split(a:result, '.\{60}\zs'), "\r")
-    " let x = substitute(a:result, '\v.{80}($)@!', '& ', 'g')
-    " let x = substitute(a:result, '\v(.{80})', '\1\r', 'g')
+
     let whole = filter(split(x, "\r"), 'len(v:val)!=0')
     let content = []
-    for item in whole
-        if strlen(item) > 60
-            let longline = split(item, '.\{60}\zs')
-            for shortline in longline
-                call add(content, shortline)
-            endfor
-        else
-            call add(content, item)
-        endif
-    endfor
+    call map(whole, {_,l -> extend(content, split(l, '.\{60}\zs'))})
 
     let opts = {"close":"button", "title":"Mac Dictionary"}
     let g:quickui_color_scheme = 'borland'
