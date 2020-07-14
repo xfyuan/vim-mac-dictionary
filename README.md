@@ -1,16 +1,12 @@
 # vim-mac-dictionary
 
-[English](README.md) [한국어](README_kr.md)
-
 A Vim plugin that helps you find words using Mac's dictionary app.
 
-![dict](https://user-images.githubusercontent.com/1855714/48099708-c6d09c00-e263-11e8-8ffa-e929d3e04aa0.gif )
-
-![dictk](https://user-images.githubusercontent.com/1855714/48100158-79edc500-e265-11e8-89e1-0a234c445fb5.gif)
+![vim-mac-dict-plugin-demo](https://cdn.jsdelivr.net/gh/xfyuan/ossimgs@master/20200714vim-mac-dict-plugin-demo.gif)
 
 # Installation
 
-* This plug-in is only available for MacOS.
+* This plug-in is only available for macOS.
 
 ## VimPlug
 
@@ -43,7 +39,7 @@ Then run the following in Vim:
 
 ## How To Use
 
-* Place the cursor on a word and type `:MacDictPopup` to find the dictionary, and print result in floating window. Notes: this feature use vim-quickui plugin.
+* Place the cursor on a word and type `:MacDictPopup` to find the dictionary, and print result in floating window. **Notes: this feature depends on vim-quickui plugin**.
 * Place the cursor on a word and type `:MacDictWord` to find the dictionary, and print result in a new buffer.
 * type `:MacDictQuery` and then type the word you want to search for, it will find the dictionary.
 
