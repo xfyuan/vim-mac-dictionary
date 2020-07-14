@@ -75,7 +75,9 @@ function! s:printBuffer(result)
 endfunction
 
 function! s:printPopup(result)
-    let x = substitute(a:result, '\v\.\s(\S+)1\.', '.\r\1\r  1.', 'g')
+    let x = substitute(a:result, '\v.*(swift|Consumed)', '', 'g')
+    let x = substitute(x, '\v(.*)extension(.*)', '\1\2', 'g')
+    let x = substitute(x, '\v\.\s(\S+)1\.', '.\r\1\r  1.', 'g')
     let x = substitute(x, '\v(\S+\s*)(1\.)', '\1\r  \2', 'g')
     let x = substitute(x, '\v(\d+\.)', '\r  \1', 'g')
     let x = substitute(x, '\v(\D\.)', '\1\r', 'g')
