@@ -7,20 +7,18 @@ A Vim plugin that helps you find words using Mac's dictionary app.
 # Installation
 
 * This plug-in is only available for macOS.
+* **Notes: the popup feature depends on [vim-quickui](https://github.com/skywind3000/vim-quickui) plugin**.
 
 ## VimPlug
 
 Place this in your .vimrc:
 
 ```viml
+Plug 'skywind3000/vim-quickui'
 Plug 'xfyuan/vim-mac-dictionary'
 ```
 
-Then run the following in Vim:
-
-```
-:source %
-```
+Then
 
 ```
 :PlugInstall
@@ -39,7 +37,7 @@ Then run the following in Vim:
 
 ## How To Use
 
-* Place the cursor on a word and type `:MacDictPopup` to find the dictionary, and print result in floating window. **Notes: this feature depends on vim-quickui plugin**.
+* Place the cursor on a word and type `:MacDictPopup` to find the dictionary, and print result in floating window. 
 * Place the cursor on a word and type `:MacDictWord` to find the dictionary, and print result in a new buffer.
 * type `:MacDictQuery` and then type the word you want to search for, it will find the dictionary.
 
