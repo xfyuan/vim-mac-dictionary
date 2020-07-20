@@ -1,6 +1,8 @@
 # vim-mac-dictionary
 
-A Vim plugin that helps you find words using Mac's dictionary app.
+A Vim plugin that helps you find words using macOS Dictionary.app. 
+
+Support to display the result in NeoVim's Floating Window.
 
 ![vim-mac-dict-plugin-demo](https://cdn.jsdelivr.net/gh/xfyuan/ossimgs@master/20200714vim-mac-dict-plugin-demo.gif)
 
